@@ -1,0 +1,114 @@
+mysql> use faculty;
+Database changed
+mysql> alter table faculty
+    -> ADD PRIMARY KEY(facno);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | NO   | PRI | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| doj     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT * from faculty
+    -> ADD CHECK(gender = 'M' or 'F');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ADD CHECK(gender = 'M' or 'F')' at line 2
+mysql> SELECT *from faculty;
++-------+---------+--------+------------+------------+--------+
+| facno | facname | gender | dob        | doj        | salary |
++-------+---------+--------+------------+------------+--------+
+| a     | archana | F      | 1981-09-07 | 2006-05-03 |  25000 |
++-------+---------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> alter table faculty
+    -> ADD CHECK(gender = 'M' or 'F');
+ERROR 3819 (HY000): Check constraint 'faculty_chk_1' is violated.
+mysql> alter table faculty
+    -> ADD CHECK(gender ='M' OR 'F');
+    ERROR 3819 (HY000): Check constraint 'faculty_chk_1' is violated.
+mysql> alter table faculty
+    -> ADD CHECK(gender='F');
+Query OK, 1 row affected (0.03 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * from faculty;
++-------+---------+--------+------------+------------+--------+
+| facno | facname | gender | dob        | doj        | salary |
++-------+---------+--------+------------+------------+--------+
+| a     | archana | F      | 1981-09-07 | 2006-05-03 |  25000 |
++-------+---------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | NO   | PRI | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| doj     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> create table subjects(facno varchar(4),facname varchar(15),gender varchar(1),dob date,salary int(6),subject varchar(15));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> desc subjects;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | YES  |     | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| subject | varchar(15) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table subjects add foreign key(facno) references faculty(facno);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc subjects;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | YES  | MUL | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| subject | varchar(15) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table subjects add unique(salary);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc subjects;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | YES  | MUL | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  | UNI | NULL    |       |
+| subject | varchar(15) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
