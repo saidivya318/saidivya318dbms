@@ -9,7 +9,7 @@ mysql> CREATE PROCEDURE RepeatExample()
     ->    SET val=1;
     ->    SET cubes=1;
     ->    SET res = '';
-    ->    REPEAT
+    ->    REPEAT;
     ->       SET cubes = val*val;
     ->       SET res = CONCAT(res, cubes,',');
     ->       SET val = val + 1;
