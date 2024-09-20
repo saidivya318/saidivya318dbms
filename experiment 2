@@ -6,7 +6,7 @@ Query OK, 0 rows affected (0.07 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> desc faculty;
-+---------+-------------+------+-----+---------+-------+
++---------+-------------+.------+-----+---------+-------+
 | Field   | Type        | Null | Key | Default | Extra |
 +---------+-------------+------+-----+---------+-------+
 | facno   | varchar(4)  | NO   | PRI | NULL    |       |
