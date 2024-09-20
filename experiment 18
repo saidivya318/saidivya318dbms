@@ -7,7 +7,7 @@ mysql> CREATE TRIGGER before_student_update
     -> BEGIN
     -> INSERT INTO student_audit
     -> SET action ='update',
-    -> student_id =OLD.Name,
+    -> student_id =OLD.Name;
     -> changedat = NOW();
     -> END //
 Query OK, 0 rows affected (0.02 sec)
