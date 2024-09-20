@@ -14,7 +14,7 @@ mysql> desc shopping;
 | product       | varchar(15) | YES  |     | NULL    |       |
 | size          | varchar(3)  | YES  |     | NULL    |       |
 | delivery_date | date        | YES  |     | NULL    |       |
-+---------------+-------------+------+-----+---------+-------+
++---------------+-------------+------+-----+---------+------+
 4 rows in set (0.02 sec)
 
 mysql> insert into shopping values('varshitha','kurti','M','2023-02-28');
