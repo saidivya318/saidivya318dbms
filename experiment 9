@@ -9,7 +9,7 @@ mysql> select * from course;
 |   125 | sravs   |          38 |              15 |       0 |
 |   126 | yash    |          38 |              16 |       2 |
 |   127 | vivek   |          38 |              16 |       1 |
-+-------+---------+-------------+-----------------+---------+
++-------+---------+-------------+----------------+---------+
 5 rows in set (0.00 sec)
 
 mysql> create table details(regno int(3),doj date);
