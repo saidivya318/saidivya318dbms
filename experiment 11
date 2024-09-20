@@ -1,4 +1,4 @@
-[8:39 am, 30/01/2023] ~Bhavana Reddy: mysql> delimiter //
+[8:39 am, 20/09/2024] ~sai divya: mysql> delimiter //
 mysql> create procedure string()
     -> begin
     -> declare x int;
