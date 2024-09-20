@@ -10,7 +10,7 @@ mysql> show databases;
 | student            |
 | students           |
 | sys                |
-+--------------------+
++-------------------+
 8 rows in set (0.00 sec)
 
 mysql> use cstudents;
